@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 const Page = () => {
   const [state, setstate] = useState([]);
   const [coin, setcoin] = useState("bitcoin");
+  const [length, setlength] = useState(0);
   const [data, setdata] = useState([]);
   const [search, setSearch] = useState([]);
   const [isSearchHovered, setIsSearchHovered] = useState(false);
@@ -36,14 +37,16 @@ const Page = () => {
           }
           setstate([...state, { coin: sum, name: coin }]);
           setSearch([...search, coin]);
-
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Graph Added SuccessFully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          if (length !== 0) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Graph Added SuccessFully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+          setlength(length+1)
         });
     } else {
       Swal.fire({
